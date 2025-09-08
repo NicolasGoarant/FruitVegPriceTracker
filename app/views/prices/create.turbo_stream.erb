@@ -1,0 +1,11 @@
+
+
+<% if @price.market_type == "grossiste" %>
+  <%= turbo_stream.replace("wholesale-price-display") do %>
+    <%= number_to_currency(@price.price, precision: 2, unit: "€", separator: ",", format: "%n %u") %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.replace("distributor-price-display") do %>
+    <%= number_to_currency(@price.price, precision: 2, unit: "€", separator: ",", format: "%n %u") %>
+  <% end %>
+<% end %>
